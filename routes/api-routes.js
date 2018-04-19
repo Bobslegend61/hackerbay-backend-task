@@ -8,11 +8,36 @@
  */
 
 const express = require(`express`);
+const patch = require(`../patch/patch`);
 const guard = require(`../auth/auth-guard`);
 let apiRoute = express.Router();
 
-apiRoute.get(`/apply-json-patch`, guard, (req, res) => {
-    res.send(`WORKING`);
+apiRoute.post(`/apply-json-patch`, guard, (req, res) => {
+    let data = req.body;
+    if(!data.doc || !data.patches) {
+        return res.json({
+            success: false,
+            massage: `Data must be in format {doc: Object, patch: Object[]}`
+        });
+    }
+
+    // validate patch
+    patch.validatePatch(data.doc, data.patches, (isValid) => {
+        if(!isValid) {
+            return res.json({
+                success: false,
+                message: `Your patches are invalid.`
+            });
+        }
+
+        /**@type {Object} The patched object*/
+        let patchedData = patch.applyPatch(data.doc, data.patches);
+        res.json({
+            success: true,
+            patchedData
+        });
+    });
+
 });
 
 // Export route

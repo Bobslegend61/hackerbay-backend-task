@@ -62,3 +62,36 @@
 {"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:07:39.000Z"}
 {"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:32:41.859Z"}
 {"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:33:24.035Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:47:23.950Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:48:09.712Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:48:44.773Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T07:56:20.614Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:04:43.140Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:07:36.770Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:10:23.107Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:16:47.497Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:17:19.633Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:20:05.916Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:20:29.491Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:30:14.613Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:30:16.568Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:30:21.879Z"}
+{"level":"error","message":"jwt must be provided","timestamp":"2018-04-19T08:35:30.580Z"}
+{"level":"error","message":"Decoding jwt error: JsonWebTokenError: jwt must be provided","timestamp":"2018-04-19T08:35:30.582Z"}
+{"level":"error","message":"Decoding jwt error: TokenExpiredError: jwt expired","timestamp":"2018-04-19T08:35:34.913Z"}
+{"level":"error","message":"Decoding jwt error: TokenExpiredError: jwt expired","timestamp":"2018-04-19T08:35:36.945Z"}
+{"level":"error","message":"Decoding jwt error: TokenExpiredError: jwt expired","timestamp":"2018-04-19T08:35:41.062Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:38:15.423Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:40:06.960Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:41:06.046Z"}
+{"level":"error","message":"jwt must be provided","timestamp":"2018-04-19T08:42:07.074Z"}
+{"level":"error","message":"Decoding jwt error: JsonWebTokenError: jwt must be provided","timestamp":"2018-04-19T08:42:07.075Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:42:50.618Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:43:30.838Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:52:05.072Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:54:21.316Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:57:20.174Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:58:15.504Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T08:59:41.249Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T09:00:37.835Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-19T20:07:53.433Z"}
