@@ -12,7 +12,7 @@ describe(`Hashing and comparing password`, function() {
             done();
         });
     });
-    /**@test#hashPassword */
+    /**@test {bcrypt#hashPassword} */
     describe(`#hashPassword()`, function() {
         it(`should output the hash`, function() {
             assert.exists(hashedPassword);

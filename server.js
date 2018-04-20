@@ -38,6 +38,5 @@ winston.configure({
 });
 winston.add(winston.transports.Console);
 
-
 // listen to port
 app.listen(PORT, () => winston.info(`App listening on port: ${PORT}`));
