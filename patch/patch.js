@@ -7,10 +7,11 @@
  */
 
 const jsonPatch = require(`fast-json-patch`);
+const winston = require(`winston`);
 
 /**
- * @property {Object} applyPatch A function to apply patch
- * @property {Object} validatePatch A function to validate patch
+ * @property {Object} applyPatch 
+ * @property {Object} validatePatch 
  */
 
 module.exports = {
@@ -19,12 +20,12 @@ module.exports = {
      * A function to apply patch
      * 
      * @param {Object} doc The object to which patch will be applied
-     * @param {Object[]} patch An array of patches to apply
+     * @param {Object[]} patches An array of patches to apply
      * 
      * @returns {Object} The patched object
      */
-    applyPatch: (doc, patch) => {
-        return jsonPatch.applyPatch(doc, patch).newDocument;
+    applyPatch: (doc, patches) => {
+        return jsonPatch.applyPatch(doc, patches).newDocument;
     },
 
     /**
@@ -42,6 +43,7 @@ module.exports = {
         if(!errors || errors.length == 0) {
             return callback(true);
         }else {
+            winston.warn(`Invalid patch`);
             return callback(false);
         }
     }

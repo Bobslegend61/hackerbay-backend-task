@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Backend Task</h1><p>Build a simple stateless microservice in Nodejs, with three major functionalities -</p>
+<ul>
+<li>Authentication</li>
+<li>JSON Patching</li>
+<li>Thumbnails image generation</li>
+</ul>
+<h1>clone</h1><p>clone repository</p>
+<pre class="prettyprint source"><code>git clone https://github.com/Bobslegend61/hackerbay-backend-task.git</code></pre><h1>Install</h1><p>install all dependencies</p>
+<pre class="prettyprint source"><code>npm install</code></pre><h1>packages</h1><p>View <a href="https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/package.json">package.json</a></p>
+<h1>Start app server</h1><p>App will be listening on port 3000</p>
+<pre class="prettyprint source"><code>npm start</code></pre><p>To start app server using nodemon</p>
+<pre class="prettyprint source"><code>npm install -g nodemon
+npm run dev</code></pre><h1>Testing</h1><p>Run all test scripts</p>
+<pre class="prettyprint source"><code>npm test</code></pre><h1>Endpoints</h1><p>All endpoints are tested with <a href="https://www.getpostman.com/">postman</a></p>
+<h2>public</h2><ul>
+<li><p><code>/login</code> is a post request that's required to have a body object with username and password. This app uses a mock username and password</p>
+<p>  <code>response</code> a json object with a token for authentication if successful or an error message if not</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;username&quot;: &quot;Alabi&quot;,
+  &quot;password&quot;: &quot;Alabi&quot; 
+}</code></pre></li>
+</ul>
+<h3>Example</h3><p><img src="/postman-img/success-login.png" alt="success login"></p>
+<p>For wrong user details
+<img src="/postman-img/wrong-details.png" alt="wrong-details"></p>
+<p>If a key is missing from the object
+<img src="/postman-img/no-key.png" alt="no-key"></p>
+<h2>Protected</h2><p>These routes are protected and requires an <code>Authorization</code> token send throught <code>headers</code> along with the data.</p>
+<p>Protected routes responds with unauthorized if token are expired or not passed along with the headers
+<img src="/postman-img/unauthorized.png" alt="unauthorized"></p>
+<ul>
+<li><p><code>/api/apply-json-patch</code> is a <code>PATCH request</code> with the object keys <code>doc</code> the object to which the patch is applied and <code>patches</code> the patches to apply.</p>
+<p>  <code>responds</code> with an object containing the patched token</p>
+</li>
+</ul>
+<h3>Example</h3><p><img src="/postman-img/authorized.png" alt="patch"></p>
+<ul>
+<li><code>/api/create-thumbnail</code> a <code>POST request</code> that accepts an image url, downloads it, resizes it to 50x50 and responds with the resized image</li>
+</ul>
+<h3>Example</h3><p><img src="postman-img/img-thumbnail.png" alt="thumbnail"></p>
+<h1>API's</h1><p><code>./auth/jsonwebtoken.js</code></p>
+<h3>jsonwebtoken.getToken(payload)</h3><p>Uses the <a href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken</a> package and returns the <code>token</code> as a string.</p>
+<ul>
+<li><code>payload</code> - some user info used as part of the token creation</li>
+</ul>
+<h3>jsonwebtoken.decodeToken(token, callback)</h3><p>Decodes a token and returns the payload or an error if token is invalid </p>
+<ul>
+<li><code>token</code> is the JsonWebToken string</li>
+</ul>
+<p><code>./auth/bcrypt.js</code></p>
+<p>Uses the <a href="https://www.npmjs.com/package/bcrypt">bcrypt</a> package</p>
+<h3>bcrypt.hashPassword(plainPassword, callback)</h3><p>Hashes the users plain password (Don't store a plain password in the database). Callback is called with the hash or an error if something goes wrong</p>
+<ul>
+<li><code>password</code> the password to be hashed</li>
+</ul>
+<h3>bcrypt.comparePassword(plainPassword, hash, callback)</h3><p>Compares a password with the hashed password of the original user. callback is called with a boolean of <code>true</code> if matches or <code>false</code> if not or an error if something goes wrong</p>
+<ul>
+<li><code>plainPassword</code> password from login details</li>
+<li><code>hash</code> hashed password from a db when user registers (for this app, we used a mock data, not a real database)</li>
+</ul>
+<p><code>./auth/auth-guard.js</code></p>
+<p>A function used by express as a middleware for guarding protected endpoint</p>
+<p><code>./img-thumbnail/img-thumbnail.js</code></p>
+<p>Contains functions for downloading and resizing images. it uses the <a href="https://www.npmjs.com/package/request">request</a> package for the downloads and <a href="https://www.npmjs.com/package/sharp">sharp</a> package for resizing an image</p>
+<h3>imageThumbnail.downloadImage(url, filename, callback)</h3><p>Downloads the image based on the url passed in. Callback is called with a filename and format of the image.</p>
+<ul>
+<li><code>url</code> - Image URL to download</li>
+<li><code>filename</code> - Name you wanna name the image</li>
+</ul>
+<p><code>./patch/patch.js</code></p>
+<p>Contains functions for validating and applying JSON patch. Uses the <a href="https://www.npmjs.com/package/fast-json-patch">fast-json-patch</a> package</p>
+<h3>patch.applyPatch(doc, patches)</h3><p>Applies the patches to the doc</p>
+<ul>
+<li><code>doc</code> - JSON object to which patch is to be applied</li>
+<li><code>patches</code> - Patches to be applied on <code>doc</code><h3>patch.validatePatch(doc, patches, callback)</h3>Check to see if patches and doc are valid. Callback is called with a boolean <code>true</code> if valid and <code>false</code> if not</li>
+</ul>
+<h2>Issue Reporting</h2><p>If you have found a bug or if you have a feature request, please report them at this repository issues section.</p>
+<h1>Author</h1><p><a href="https://github.com/Bobslegend61">Alabi Emmanuel</a></p>
+<h1>License</h1><p>This project is licensed under the MIT license.</p></article>
+    </section>
+
+
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>auth/auth-guard.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Authentication Guard</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_auth-guard.js.html">auth/auth-guard.js</a>, <a href="auth_auth-guard.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>auth/bcrypt.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Password encryption and comparing</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_bcrypt.js.html">auth/bcrypt.js</a>, <a href="auth_bcrypt.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>auth/jsonwebtoken.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">All jwt functions</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_jsonwebtoken.js.html">auth/jsonwebtoken.js</a>, <a href="auth_jsonwebtoken.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>config/config.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">This file contains all configuration for this app.</div>
+        
+
+        
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>jsonwebtoken</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Object containing all keys and configurations needed by jwt.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userDelails</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Object containing mock username and password.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="config_config.js.html">config/config.js</a>, <a href="config_config.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>img-thumbnail/img-thumbnail.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Image thumbnail Request</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="img-thumbnail_img-thumbnail.js.html">img-thumbnail/img-thumbnail.js</a>, <a href="img-thumbnail_img-thumbnail.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>patch/patch.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">JSON PATCH</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="patch_patch.js.html">patch/patch.js</a>, <a href="patch_patch.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>routes/api-routes.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Api Routes</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel.</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_api-routes.js.html">routes/api-routes.js</a>, <a href="routes_api-routes.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>routes/routes.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Routes</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel.</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_routes.js.html">routes/routes.js</a>, <a href="routes_routes.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>server.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">This is the entry file for this app.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.1</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Alabi Emmanuel</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="server.js.html">server.js</a>, <a href="server.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#PORT">PORT</a></li><li><a href="global.html#saltRounds">saltRounds</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 03:11:06 GMT+0100 (W. Central Africa Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

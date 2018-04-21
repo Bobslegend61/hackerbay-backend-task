@@ -258,3 +258,39 @@
 {"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T07:59:14.056Z"}
 {"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T17:06:07.188Z"}
 {"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T17:10:25.311Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T17:14:05.322Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T17:14:57.821Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T17:17:04.354Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T17:17:22.006Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T19:39:21.652Z"}
+{"level":"error","message":"Decoding jwt error: TokenExpiredError: jwt expired","timestamp":"2018-04-20T19:45:08.549Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-20T19:59:24.561Z"}
+{"level":"error","message":"invalid token","timestamp":"2018-04-20T20:00:58.512Z"}
+{"level":"error","message":"Decoding jwt error: JsonWebTokenError: invalid token","timestamp":"2018-04-20T20:00:58.518Z"}
+{"level":"error","message":"invalid token","timestamp":"2018-04-20T20:01:41.298Z"}
+{"level":"error","message":"Decoding jwt error: JsonWebTokenError: invalid token","timestamp":"2018-04-20T20:01:41.307Z"}
+{"level":"error","message":"invalid token","timestamp":"2018-04-20T20:01:43.973Z"}
+{"level":"error","message":"Decoding jwt error: JsonWebTokenError: invalid token","timestamp":"2018-04-20T20:01:43.974Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T00:41:23.998Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T00:49:05.752Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T00:52:37.442Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:12:48.261Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:15:38.881Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:19:37.275Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:21:30.318Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:23:00.249Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:49:31.881Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:50:52.082Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:53:57.537Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:54:37.445Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:55:15.245Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:55:45.931Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:56:41.462Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:57:15.143Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T01:59:10.010Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T02:05:55.053Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T02:06:08.104Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T02:07:17.119Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T02:11:08.415Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T02:15:16.194Z"}
+{"level":"info","message":"App listening on port: 3000","timestamp":"2018-04-21T02:16:54.959Z"}
