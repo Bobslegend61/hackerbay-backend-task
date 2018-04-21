@@ -51,31 +51,31 @@ All endpoints are tested with [postman](https://www.getpostman.com/)
 ```
 
 ### Example
-![success login](/postman-img/success-login.png)
+![success login](https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/postman-img/success-login.PNG)
 
 For wrong user details
-![wrong-details](/postman-img/wrong-details.png)
+![wrong-details](https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/postman-img/wrong-details.PNG)
 
 If a key is missing from the object
-![no-key](/postman-img/no-key.png)
+![no-key](https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/postman-img/no-key.PNG)
 
 ## Protected
 These routes are protected and requires an `Authorization` token send throught `headers` along with the data.
 
 Protected routes responds with unauthorized if token are expired or not passed along with the headers
-![unauthorized](/postman-img/unauthorized.png)
+![unauthorized](https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/postman-img/unauthorized.PNG)
 
 * `/api/apply-json-patch` is a `PATCH request` with the object keys `doc` the object to which the patch is applied and `patches` the patches to apply.
 
     `responds` with an object containing the patched token
 
 ### Example
-![patch](/postman-img/authorized.png)
+![patch](https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/postman-img/authorized.PNG)
 
 * `/api/create-thumbnail` a `POST request` that accepts an image url, downloads it, resizes it to 50x50 and responds with the resized image
 
 ### Example
-![thumbnail](postman-img/img-thumbnail.png)
+![thumbnail](https://github.com/Bobslegend61/hackerbay-backend-task/blob/master/postman-img/img-thumbnail.PNG)
 
 
 # API's
